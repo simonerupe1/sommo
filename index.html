@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simon Erupe - Medical Microbiology Student | Tech Enthusiast | Researcher">
+    <meta property="og:image" content="profile.jpg">
+    <title>Simon Erupe | Medical Microbiologist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-light: #4da6ff;
+            --secondary: #6c757d;
+            --text: #333;
+            --bg: #fff;
+            --card-bg: #f9f9f9;
+            --header-bg: #333;
+            --footer-bg: #222;
+            --text-light: #777;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --glow: 0 0 15px rgba(0, 123, 255, 0.5);
+        }
+
+        .dark-mode {
+            --primary: #4da6ff;
+            --primary-light: #80bfff;
+            --text: #f0f0f0;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: #000;
+            --footer-bg: #000;
+            --text-light: #aaa;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(77, 166, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg) scale(1.2);
+            color: var(--primary-light);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-light);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ddd 0%, #bbb 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+            }
+            100% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(0, 123, 255, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInDown 1s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s both 0.3s;
+        }
+
+        .scroll-down {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .scroll-down:hover {
+            color: var(--primary-light);
+            transform: translateY(5px);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .introduction::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.3;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            animation: fadeIn 1s both;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 25%;
+            background-color: var(--primary);
+            transform-origin: left;
+            animation: scaleIn 0.5s both 0.5s;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        .introduction img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1.5rem auto;
+            border: 4px solid var(--primary);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            animation: fadeIn 1s both 0.7s;
+        }
+
+        .introduction img:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .introduction p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            animation: fadeInUp 1s both 1s;
+        }
+
+        /* Preview Cards Section */
+        .preview-section {
+            padding: 3rem 2rem;
+            background-color: var(--card-bg);
+            position: relative;
+        }
+
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .preview-card {
+            background-color: var(--bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s both;
+        }
+
+        .preview-card:nth-child(1) { animation-delay: 0.2s; }
+        .preview-card:nth-child(2) { animation-delay: 0.4s; }
+        .preview-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .preview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .preview-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .preview-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .preview-card h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .preview-card:hover h3::after {
+            width: 100%;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            filter: grayscale(20%);
+        }
+
+        .preview-card:hover .preview-image {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        .preview-content {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .preview-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .preview-card:hover .preview-content p {
+            color: var(--text);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 2rem;
+            background-color: var(--bg);
+            position: relative;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="none" stroke="%23007bff" stroke-width="0.5" stroke-opacity="0.1" d="M0,0 L100,100 M100,0 L0,100"></path></svg>');
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s both;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,123,255,0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-card h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .project-card:hover h3::after {
+            width: 100%;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover p {
+            color: var(--text);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-tag {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,123,255,0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 250px;
+            perspective: 1000px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .profile-image:hover img {
+            transform: rotateY(10deg) scale(1.03);
+            box-shadow: var(--glow);
+        }
+
+        .profile-bio {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about .biography p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .about:hover .biography p {
+            color: var(--text);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skills, .hobbies {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skills h3, .hobbies h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .skills h3::after, .hobbies h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .about:hover .skills h3::after,
+        .about:hover .hobbies h3::after {
+            width: 100%;
+        }
+
+        .skills ul, .hobbies ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skills li, .hobbies li {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .about:hover .skills li,
+        .about:hover .hobbies li {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Favorite Meals Section */
+        .favorite-meals {
+            padding: 4rem 2rem;
+            background-color: var(--bg);
+            position: relative;
+        }
+
+        .favorite-meals::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.3;
+        }
+
+        .meal-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            animation: fadeInUp 1s both;
+        }
+
+        .meal-card:nth-child(1) { animation-delay: 0.2s; }
+        .meal-card:nth-child(2) { animation-delay: 0.4s; }
+
+        .meal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .meal-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+        }
+
+        .meal-card h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .meal-card:hover h3::after {
+            width: 50%;
+        }
+
+        .meal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meal-images img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: brightness(0.9);
+        }
+
+        .meal-card:hover .meal-images img {
+            filter: brightness(1);
+            transform: scale(1.02);
+        }
+
+        .meal-card h4 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .meal-card:hover h4 {
+            color: var(--primary-light);
+        }
+
+        .meal-card ul, .meal-card ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .meal-card:hover ul, 
+        .meal-card:hover ol {
+            color: var(--text);
+        }
+
+        .nutrition-info {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .meal-card:hover .nutrition-info {
+            background-color: rgba(0, 123, 255, 0.15);
+        }
+
+        .nutrition-info h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background-color: var(--card-bg);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="none" stroke="%23007bff" stroke-width="0.5" stroke-opacity="0.05" d="M0,0 L100,100 M100,0 L0,100"></path></svg>');
+            background-size: 30px 30px;
+            z-index: 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            animation: fadeIn 1s both;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .contact-form:hover .form-group label {
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            transition: var(--transition);
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-links img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover img {
+            filter: brightness(0) invert(0.8);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .profile-section {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .preview-container, .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links a {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <header>
+        <div class="header-container">
+            <h1>Simon Erupe</h1>
+            <button class="theme-toggle" id="themeToggle">🌓</button>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#favorite-meals">Favorite Meals</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Simon Erupe" loading="lazy">
+            <h1>Welcome to Simon's Digital Space</h1>
+            <p>Crafting innovative solutions and building meaningful experiences</p>
+            <a href="#about" class="scroll-down">↓</a>
+        </div>
+    </section>
+
+    <section class="introduction">
+        <h2 class="section-title">About Simon</h2>
+        <img src="profile.jpg" alt="Simon Erupe" loading="lazy">
+        <p>Simon is currently studying Bachelor of Science in Medical Microbiology at Jomo Kenyatta University of Agriculture and Technology. He is passionate about tech and enjoys reading, exploring technology, and creating digital content.</p>
+    </section>
+
+    <section class="preview-section">
+        <div class="preview-container">
+            <div class="preview-card">
+                <h3>Who is Simon?</h3>
+                <img src="profile3.jpg" alt="Simon Erupe" class="preview-image" loading="lazy">
+                <div class="preview-content">
+                    <p>Simon is an aspiring Medical Microbiologist passionate about infectious disease research and the use of technology in healthcare. Outside of academics, Simon has a keen interest in photography, hiking, reading and travel.</p>
+                </div>
+                <a href="#about" class="cta-button">Learn More</a>
+            </div>
+            
+            <div class="preview-card">
+                <h3>Favorite Meals</h3>
+                <img src="jollof-rice1.jpg" alt="Jollof Rice" class="preview-image" loading="lazy">
+                <div class="preview-content">
+                    <p>Discover Simon's favorite meals including delicious Jollof Rice and Chicken Stir-Fry with detailed recipes and preparation instructions.</p>
+                </div>
+                <a href="#favorite-meals" class="cta-button">Explore Meals</a>
+            </div>
+
+            <div class="preview-card">
+                <h3>My Projects</h3>
+                <img src="profile.jpg" alt="Portfolio Website" class="preview-image" loading="lazy">
+                <div class="preview-content">
+                    <p>Explore my personal portfolio website project showcasing my front-end development skills.</p>
+                </div>
+                <a href="#projects" class="cta-button">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Personal Portfolio Website</h3>
+                <div class="project-tags">
+                    <span class="project-tag">HTML/CSS</span>
+                    <span class="project-tag">JavaScript</span>
+                    <span class="project-tag">Responsive Design</span>
+                </div>
+                <p>Designed and developed this personal website to showcase my skills in front-end development. Features include dark/light mode toggle, animated particles, and responsive layouts.</p>
+                <a href="#Home" class="cta-button"></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">Who is Simon?</h2>
+        
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="profile3.jpg" alt="Simon Erupe" loading="lazy">
+            </div>
+            <div class="profile-bio">
+                <div class="biography">
+                    <p>Simon is an aspiring Medical Microbiologist passionate about infectious disease research and the use technology in healthcare.</p>  
+                    <p>Outside of academics, Simon has a keen interest in photography, hiking, reading and travel. These activities help him find his adrenaline. Being both a naturalist and an outdoors enthusiast, Simon finds his thrill in adventure. While in high school, he loved studying Geography as his favourite subject. This was driven by his childhood dream of travelling the world and seeing places out of maps.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="biography">
+            <p>As an aspiring medical microbiologist, some of Simon's goals include:</p>
+            <ol>
+                <li>Pursue higher learning and enhance his skill set so he can contribute to innovative projects in the field of Medical Microbiology.</li>
+                <li>Contribute to significant research in microbiology, focusing on emerging infectious diseases, antibiotic resistance, or microbial genetics. He is always eager to learn and collaborate on exciting new challenges.</li>
+                <li>Gain hands-on experience in a clinical microbiology laboratory, working with diagnostic techniques, pathogen identification, and antimicrobial resistance.</li>
+            </ol>
+        </div>
+
+        <div class="skills-container">
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Excel</li>
+                    <li>FrenchS</li>
+                    <li>Adaptability</li>
+                    <li>Teamwork</li>
+                </ul>
+            </div>
+
+            <div class="hobbies">
+                <h3>Hobbies</h3>
+                <ul>
+                    <li>Swimming</li>
+                    <li>Basketball</li>
+                    <li>Reading</li>
+                    <li>Photography</li>
+                    <li>Hiking</li>
+                    <li>Travel</li>
+                </ul>
+            </div>
+            <div class="fun-facts">
+                <h3>Fun-facts</h3>
+                <ul>
+                <li>Simon tends to be a night owl - some of his best ideas usually come at 2 AM.</li>
+                <li>He has played almost every sport there is in the world. Some physically, some virtually.</li>
+                <li>He is currently learning to code in Python, part-time.</li>
+                <li>Whenever he feels low, he turns to music for console; headphones on, hits the road to wherever, till his feet ache, or just lies in bed while gazing at the ceiling; music still blaring louder. This is how he appreciates some alone time, sometimes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="favorite-meals" class="favorite-meals">
+        <h2 class="section-title">My Favorite Meals</h2>
+
+        <div class="meal-card">
+            <h3>Jollof Rice with Meat</h3>
+            <div class="meal-images">
+                <img src="jollof-rice1.jpg" alt="Jollof Rice" loading="lazy">
+                <img src="jollof-rice2.jpg" alt="Jollof Rice served" loading="lazy">
+            </div>
+            <h4>Ingredients:</h4>
+            <ul>
+                <li>2 cups long-grain rice</li>
+                <li>1.5 lbs meat (beef, chicken, or goat), cut into pieces</li>
+                <li>1 large onion, chopped</li>
+                <li>2-3 red bell peppers (tatashe), deseeded and roughly chopped</li>
+                <li>2-3 tomatoes, roughly chopped</li>
+                <li>1-2 scotch bonnet peppers (ata rodo), whole (optional, for heat)</li>
+                <li>2-3 cloves garlic, minced</li>
+                <li>1 inch ginger, grated</li>
+                <li>1 cup vegetable or chicken broth</li>
+                <li>1/2 cup tomato paste</li>
+                <li>2 teaspoons curry powder</li>
+                <li>1 teaspoon dried thyme</li>
+                <li>2-3 bay leaves</li>
+                <li>Salt to taste</li>
+                <li>Vegetable oil</li>
+            </ul>
+            <h4>Instructions:</h4>
+            <ol>
+                <li><strong>Prepare the Meat:</strong> Season the meat with salt, pepper, onion, garlic, and ginger. Boil or bake until tender. You can also fry the cooked meat for extra flavor. Set aside.</li>
+                <li><strong>Blend the Pepper Base:</strong> Combine the chopped red bell peppers, tomatoes, and scotch bonnet pepper (if using) in a blender. Blend until smooth.</li>
+                <li><strong>Sauté Aromatics:</strong> Heat vegetable oil in a large pot over medium heat. Add the chopped onion and sauté until translucent, about 5 minutes. Add the minced garlic and grated ginger and cook for another minute until fragrant.</li>
+                <li><strong>Add Tomato Paste and Spices:</strong> Stir in the tomato paste and cook for 2-3 minutes, stirring constantly, until it darkens slightly. Add the curry powder and dried thyme and cook for another minute.</li>
+                <li><strong>Add Pepper Base and Broth:</strong> Pour in the blended pepper mixture and the broth. Add the bay leaves and salt to taste. Bring to a boil, then reduce the heat and simmer for about 15-20 minutes, stirring occasionally, until the sauce has thickened slightly.</li>
+                <li><strong>Add Rice and Meat:</strong> Wash the rice thoroughly and add it to the pot. Stir well to ensure the rice is fully coated with the sauce. Add the cooked meat pieces, nestling them into the rice.</li>
+                <li><strong>Steam the Rice:</strong> Reduce the heat to low, cover the pot tightly with a lid, and cook for 25-35 minutes, or until all the liquid has been absorbed and the rice is cooked through. Avoid lifting the lid during the first 20 minutes to allow the rice to steam properly.</li>
+                <li><strong>Serve:</strong> Once the rice is cooked, remove from heat and let it sit, covered, for 5-10 minutes. Fluff the rice with a fork before serving.</li>
+            </ol>
+            <div class="nutrition-info">
+                <h5>Nutrition Information (per serving):</h5>
+                <ul>
+                    <li>Calories: ~450-650 kcal</li>
+                    <li>Protein: ~25-40g</li>
+                    <li>Fat: ~15-30g</li>
+                    <li>Carbohydrates: ~50-80g</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="meal-card">
+            <h3>Chicken Stir-Fry</h3>
+            <div class="meal-images">
+                <img src="chicken-stir-fry1.jpg" alt="Chicken Stir-Fry" loading="lazy">
+                <img src="chicken-stir-fry2.jpg" alt="Chicken Stir-Fry served" loading="lazy">
+            </div>
+            <h4>Ingredients:</h4>
+            <ul>
+                <li>2 boneless, skinless chicken breasts, cut into bite-sized pieces</li>
+                <li>1 tablespoon soy sauce</li>
+                <li>1 teaspoon cornstarch</li>
+                <li>1 tablespoon vegetable oil</li>
+                <li>1 onion, sliced</li>
+                <li>2 cloves garlic, minced</li>
+                <li>1 bell pepper (any color), sliced</li>
+                <li>1 cup broccoli florets</li>
+                <li>1/2 cup carrots, sliced</li>
+                <li>2 tablespoons stir-fry sauce</li>
+                <li>Cooked rice, for serving</li>
+                <li>Optional garnishes: sesame seeds, chopped green onions</li>
+            </ul>
+            <h4>Instructions:</h4>
+            <ol>
+                <li>In a medium bowl, toss the chicken pieces with soy sauce and cornstarch. Set aside for at least 10 minutes.</li>
+                <li>Heat the vegetable oil in a large skillet or wok over medium-high heat.</li>
+                <li>Add the chicken and cook until brown and cooked through. Remove the chicken from the skillet and set aside.</li>
+                <li>Add the sliced onion and minced garlic to the skillet and cook until fragrant, about 1 minute.</li>
+                <li>Add the pepper, broccoli florets, and carrots to the skillet. Stir-fry for 5-7 minutes, or until the vegetables are tender-crisp.</li>
+                <li>Return the cooked chicken to the skillet. Pour in the stir-fry sauce and toss to coat everything evenly. Cook for another 1-2 minutes, allowing the sauce to thicken slightly.</li>
+                <li>Serve hot over cooked rice. Garnish with sesame seeds and chopped green onions, if desired.</li>
+            </ol>
+            <div class="nutrition-info">
+                <h5>Nutrition Information (per serving):</h5>
+                <ul>
+                    <li>Calories: ~400-500 kcal</li>
+                    <li>Protein: ~35-40g</li>
+                    <li>Fat: ~15-20g</li>
+                    <li>Carbohydrates: ~30-40g</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>I'd love to hear from you! Whether you have questions about my work, want to collaborate, or just want to say hello, feel free to reach out.</p>
+        
+        <div class="contact-form">
+            <form netlify>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/iam.erupe" target="_blank" aria-label="Instagram">📷</a>
+            <a href="https://wa.me/254759998596" target="_blank" aria-label="WhatsApp">💬</a>
+            <a href="https://github.com/SimonErupe" target="_blank" aria-label="GitHub">💻</a>
+            <a href="https://www.linkedin.com/in/simon-engorpul-a5998b35b" target="_blank" aria-label="LinkedIn">👔</a>
+            <a href="https://youtube.com/@filmlibrary-h2p" target="_blank" aria-label="YouTube">▶️</a>
+        </div>
+        <div class="footer-links">
+            <a href="#home">Home</a>|
+            <a href="#about">About</a>|
+            <a href="#projects">Projects</a>|
+            <a href="#favorite-meals">Favorite Meals</a>|
+            <a href="#contact">Contact</a>|
+            <a href="mailto:simonengorpul@gmail.com">Email</a>
+        </div>
+        
+        <p class="copyright">&copy; 2025 Simon Erupe. All rights reserved.</p>
+    </footer>
+
+    <a href="#home" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 8px
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            
+            // Recreate particles to match new theme color
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Create particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section-title, .preview-card, .project-card, .meal-card, .event');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Form submission handling
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Here you would typically send the form data to a server
+                // For this demo, we'll just show a success message
+                alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
